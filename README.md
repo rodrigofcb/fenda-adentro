@@ -25,7 +25,8 @@ que ainda não são finais.
 - **Grafia:** Cisneo (não "Cineo").
 - **Resolução nativa do Cisneo:** 183 px de altura (base de frente, 91 × 183). O tamanho de exibição no jogo será decidido num teste em tela de celular; reduzir depois é possível, aumentar não.
 - **Paleta:** `paleta/cisneo.png`, 40 cores. Toda animação nova é mapeada para ela (`--paleta`), para as cores não mudarem entre animações.
-- **Orientação:** sprites laterais desenhados virados para a direita; a esquerda é espelhada no jogo.
+- **Orientação:** cada animação lateral é desenhada nas duas direções (direita e esquerda), sem espelhar, por causa dos acessórios assimétricos (alaúde, espada, bolsa).
+- **Cisne:** fica sempre no ombro esquerdo do Cisneo e é uma camada separada (`sprites/cisne/`), sobreposta no jogo. O Cisneo é desenhado sem o cisne. Virado para a direita, o cisne vai na frente do corpo; virado para a esquerda, atrás da cabeça. Cada quadro do Cisneo precisa de um ponto de ancoragem do ombro esquerdo.
 - **Pedidos ao gerador:** sempre anexar a base aprovada, uma animação por pedido, fundo `#FF00FF`, PNG, células do mesmo tamanho sem espaço entre elas.
 - **Nomes de arquivo:** `<personagem>_<animação>_<nn>.png`, quadros numerados a partir de 00.
 
@@ -46,5 +47,7 @@ ao personagem.
 |---|---|---|
 | Cisneo | base de frente | aprovada |
 | Cisneo | vistas frente, perfil e costas (alaúde nas costas) | v2 em `bruto/`: costas ok; perfil virado à esquerda com o cisne no ombro errado |
-| Cisneo | caminhada (8 quadros) | a gerar |
+| Cisneo | vistas sem o cisne (frente, perfil direita, costas, perfil esquerda) | a gerar |
+| Cisne | vistas (direita, esquerda, frente, costas) | a gerar |
+| Cisneo | caminhada (8 quadros × 2 direções) | a gerar |
 | Rawry | conceito | a criar |
