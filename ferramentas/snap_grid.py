@@ -79,6 +79,14 @@ def main():
     # fundo magenta -> transparente
     mag = (nat[..., 0] > 200) & (nat[..., 1] < 80) & (nat[..., 2] > 200)
     alpha = np.where(mag, 0, 255).astype(np.uint8)
+    # franja: pixels de borda misturados com o magenta (rosados) também saem
+    from scipy import ndimage
+    r, g, bb = nat[..., 0], nat[..., 1], nat[..., 2]
+    rosado = (r - g > 70) & (bb - g > 60) & (r > 150) & (bb > 120)
+    for _ in range(2):
+        op = alpha > 0
+        borda = op & ~ndimage.binary_erosion(op)
+        alpha[borda & rosado] = 0
     op = alpha > 0
 
     if a.paleta:

@@ -23,8 +23,8 @@ que ainda não são finais.
 ## Convenções
 
 - **Grafia:** Cisneo (não "Cineo").
-- **Resolução nativa do Cisneo:** 183 px de altura (base de frente, 91 × 183). O tamanho de exibição no jogo será decidido num teste em tela de celular; reduzir depois é possível, aumentar não.
-- **Paleta:** `paleta/cisneo.png`, 40 cores. Toda animação nova é mapeada para ela (`--paleta`), para as cores não mudarem entre animações.
+- **Resolução nativa do Cisneo:** cerca de 258 px de altura nas vistas sem o cisne (`cisneo_frente`, `cisneo_perfil_direita`, `cisneo_costas`, `cisneo_perfil_esquerda`), que são a referência do jogo. A pose tocando (`cisneo_frente_tocando`, 91 × 183) foi gerada em outra escala. O tamanho de exibição no jogo será decidido num teste em tela de celular; reduzir depois é possível, aumentar não.
+- **Paleta:** `paleta/cisneo_v2.png`, 48 cores, tirada das vistas sem o cisne (`paleta/cisneo.png` é a da pose tocando). Toda animação nova é mapeada para ela (`--paleta`), para as cores não mudarem entre animações.
 - **Orientação:** cada animação lateral é desenhada nas duas direções (direita e esquerda), sem espelhar, por causa dos acessórios assimétricos (alaúde, espada, bolsa).
 - **Cisne:** fica sempre no ombro esquerdo do Cisneo e é uma camada separada (`sprites/cisne/`), sobreposta no jogo. O Cisneo é desenhado sem o cisne. Virado para a direita, o cisne vai na frente do corpo; virado para a esquerda, atrás da cabeça. Cada quadro do Cisneo precisa de um ponto de ancoragem do ombro esquerdo.
 - **Pedidos ao gerador:** sempre anexar a base aprovada, uma animação por pedido, fundo `#FF00FF`, PNG, células do mesmo tamanho sem espaço entre elas.
@@ -45,9 +45,9 @@ ao personagem.
 
 | Personagem | Animação | Estado |
 |---|---|---|
-| Cisneo | base de frente | aprovada |
+| Cisneo | frente tocando o alaúde | aprovada |
 | Cisneo | vistas frente, perfil e costas (alaúde nas costas) | v2 em `bruto/`: costas ok; perfil virado à esquerda com o cisne no ombro errado |
-| Cisneo | vistas sem o cisne (frente, perfil direita, costas, perfil esquerda) | a gerar |
+| Cisneo | vistas sem o cisne (frente, perfil direita, costas, perfil esquerda) | na grade (pixel de 5,37 px no original); acessórios trocados entre os perfis |
 | Cisne | vistas (direita, esquerda, frente, costas) | a gerar |
 | Cisneo | caminhada (8 quadros × 2 direções) | a gerar |
 | Rawry | conceito | a criar |
