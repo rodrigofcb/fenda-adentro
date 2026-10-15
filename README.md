@@ -36,6 +36,11 @@ que ainda não são finais.
 
 ## Limpeza de uma imagem do gerador
 
+Folhas de animação: pedir grade 2×2 (4 quadros por imagem). Uma linha de 8 sai com 300 px de altura e sem grade de pixel.
+Quando a grade não é detectável (bloco < 4 px no JPEG), cada quadro é reamostrado para 258 px de altura (`--bloco altura/258`),
+mapeado na paleta e depois alinhado (`ferramentas/alinhar_quadros.py`: pés na base, cabeça na mesma coluna).
+
+
 ```
 python ferramentas/snap_grid.py bruto/cisneo/base/cisneo_base_frente_gemini.jpg \
   sprites/cisneo/base/cisneo_frente.png --paleta paleta/cisneo.png
@@ -51,8 +56,8 @@ ao personagem.
 python3 -m venv .venv-blender && .venv-blender/bin/pip install bpy      # Blender 5.2 como módulo Python
 .venv-blender/bin/python ferramentas/blender/render_sprites.py --anim walk --dir right --frames 8 \
     --out /tmp/render/right --blend modelos/cisneo_caminhada_right.blend
-python ferramentas/pixelar.py /tmp/render/right sprites/cisneo/caminhada_direita --prefixo cisneo3d_caminhada_right
-python ferramentas/montar_gif.py build/previa/cisneo3d_caminhada_right.gif sprites/cisneo/caminhada_direita/*.png
+python ferramentas/pixelar.py /tmp/render/right sprites/cisneo_3d/caminhada_direita --prefixo cisneo3d_caminhada_right
+python ferramentas/montar_gif.py build/previa/cisneo3d_caminhada_right.gif sprites/cisneo_3d/caminhada_direita/*.png
 ```
 
 - `cisneo_modelo.py`: corpo segmentado por juntas (Empties), capa com abertura que fecha conforme desce, acessórios e cisne; paleta em `PALETA`.
@@ -70,6 +75,6 @@ python ferramentas/montar_gif.py build/previa/cisneo3d_caminhada_right.gif sprit
 | Cisneo | vistas sem acessórios (corpo) | na grade, mesma posição da folha com acessórios |
 | Acessórios | folha solta (alaúde, espada com corneta, bolsa, poção) | em `bruto/`; desenhados na horizontal, servem para animações com o item na mão |
 | Cisne | vistas (direita, esquerda, frente, costas) | a gerar |
-| Cisneo 3D | parado (frente, direita, esquerda) | 1º teste em `sprites/cisneo/parado_3d/`; comparação em `build/previa/comparacao_3d_vs_gemini.png` |
-| Cisneo 3D | caminhada (8 quadros × 2 direções) | 1º teste em `sprites/cisneo/caminhada_*/`; GIFs em `build/previa/` |
+| Cisneo | caminhada p/ direita, quadros 1 a 4 (Gemini, grade 2×2) | em `sprites/cisneo/caminhada_direita/`, alinhados; GIF `build/previa/cisneo_caminhada_direita_v1.gif`. Faltam os 4 quadros com a perna esquerda à frente |
+| Cisneo 3D | parado e caminhada | descartado como visual; fica em `sprites/cisneo_3d/` só como referência de lados e poses |
 | Rawry | conceito | a criar |
