@@ -18,7 +18,7 @@ que ainda não são finais.
 | `sprites/<personagem>/<animação>/` | Quadros limpos em resolução nativa, fundo transparente. |
 | `paleta/` | Paleta travada de cada personagem (PNG de uma linha). |
 | `modelos/` | Arquivos `.blend` do Cisneo 3D (modelo, rig e animação), gerados por script. |
-| `build/` | Atlas e JSON para o jogo; `previa/` tem GIFs e imagens de conferência. |
+| `build/` | Atlas e JSON para o jogo; `previa/` tem GIFs e imagens de conferência; `referencia_gemini/` tem as bases ampliadas 6× em fundo magenta, prontas para anexar nos pedidos ao Gemini. |
 | `ferramentas/` | Scripts de limpeza e montagem. `ferramentas/blender/` tem o modelo 3D e o render. |
 
 ## Convenções
@@ -29,7 +29,8 @@ que ainda não são finais.
 - **Orientação:** cada animação lateral é desenhada nas duas direções (direita e esquerda), sem espelhar, por causa dos acessórios assimétricos (alaúde, espada, bolsa).
 - **Lados (regra de geometria):** um personagem virado para a direita da tela mostra o lado DIREITO dele (como Lincoln na moeda de 1 centavo); virado para a esquerda mostra o lado ESQUERDO. Logo: virado para a direita aparecem a bolsa e a poção (quadril direito) e o cisne fica escondido atrás da cabeça; virado para a esquerda aparecem a espada e a corneta (quadril esquerdo) e o cisne fica na frente. A folha `cisneo_vistas_sem_cisne_gemini.jpg` (1ª versão) está certa; a v2 trocou os lados por um pedido errado meu.
 - **Cisne:** sempre no ombro esquerdo. No modelo 3D ele é uma peça presa ao peito, então aparece do lado certo sozinho.
-- **Pipeline 3D (em teste):** o Cisneo é modelado e animado por script no Blender (`ferramentas/blender/`), renderizado em câmera ortográfica na resolução nativa com materiais toon de 3 tons, e o contorno é aplicado em pós-processamento (`ferramentas/pixelar.py`). Os acessórios e a sobreposição dos membros saem certos em qualquer direção sem conferência manual. A pixel art do Gemini continua sendo a referência de estilo e paleta.
+- **Decisão (15/10):** o visual do jogo é a pixel art do Gemini; o 3D ficou longe do estilo e serve só para conferir lados e poses.
+- **Pipeline 3D (ferramenta auxiliar):** o Cisneo é modelado e animado por script no Blender (`ferramentas/blender/`), renderizado em câmera ortográfica na resolução nativa com materiais toon de 3 tons, e o contorno é aplicado em pós-processamento (`ferramentas/pixelar.py`). Os acessórios e a sobreposição dos membros saem certos em qualquer direção sem conferência manual. A pixel art do Gemini continua sendo a referência de estilo e paleta.
 - **Pedidos ao gerador:** sempre anexar a base aprovada, uma animação por pedido, fundo `#FF00FF`, PNG, células do mesmo tamanho sem espaço entre elas.
 - **Nomes de arquivo:** `<personagem>_<animação>_<nn>.png`, quadros numerados a partir de 00.
 
