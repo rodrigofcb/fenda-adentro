@@ -45,6 +45,6 @@ ao personagem.
 | Personagem | Animação | Estado |
 |---|---|---|
 | Cisneo | base de frente | aprovada |
-| Cisneo | vistas frente, perfil e costas (alaúde nas costas) | 1ª versão em `bruto/`; costas a corrigir (alaúde) e grade irregular |
+| Cisneo | vistas frente, perfil e costas (alaúde nas costas) | v2 em `bruto/`: costas ok; perfil virado à esquerda com o cisne no ombro errado |
 | Cisneo | caminhada (8 quadros) | a gerar |
 | Rawry | conceito | a criar |
