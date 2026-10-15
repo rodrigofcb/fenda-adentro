@@ -48,6 +48,8 @@ ao personagem.
 | Cisneo | frente tocando o alaúde | aprovada |
 | Cisneo | vistas frente, perfil e costas (alaúde nas costas) | v2 em `bruto/`: costas ok; perfil virado à esquerda com o cisne no ombro errado |
 | Cisneo | vistas sem o cisne (frente, perfil direita, costas, perfil esquerda) | na grade (pixel de 5,37 px no original); acessórios trocados entre os perfis |
+| Cisneo | vistas sem acessórios (corpo) | na grade, mesma posição da folha com acessórios |
+| Acessórios | folha solta (alaúde, espada com corneta, bolsa, poção) | em `bruto/`; desenhados na horizontal, servem para animações com o item na mão |
 | Cisne | vistas (direita, esquerda, frente, costas) | a gerar |
 | Cisneo | caminhada (8 quadros × 2 direções) | a gerar |
 | Rawry | conceito | a criar |
