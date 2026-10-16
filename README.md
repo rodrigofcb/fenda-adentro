@@ -41,6 +41,8 @@ Quando a grade não é detectável (bloco < 4 px no JPEG), cada quadro é reamos
 mapeado na paleta e depois alinhado (`ferramentas/alinhar_quadros.py`: pés na base, cabeça na mesma coluna).
 O Gemini só desenha a perna próxima à frente; a fase oposta é gerada por `ferramentas/trocar_pernas.py`, que separa as duas pernas
 (watershed a partir das botas) e troca os tons claros/escuros entre elas.
+A direção esquerda sai da direita por `ferramentas/espelhar_para_esquerda.py`: espelha, apaga bolsa e poção do quadril e sobrepõe a espada
+extraída da base esquerda (diferença entre a vista com e sem acessórios), desenhada atrás do braço, da mão e das botas.
 
 
 ```
@@ -78,5 +80,6 @@ python ferramentas/montar_gif.py build/previa/cisneo3d_caminhada_right.gif sprit
 | Acessórios | folha solta (alaúde, espada com corneta, bolsa, poção) | em `bruto/`; desenhados na horizontal, servem para animações com o item na mão |
 | Cisne | vistas (direita, esquerda, frente, costas) | a gerar |
 | Cisneo | caminhada p/ direita, 8 quadros | v2 em `sprites/cisneo/caminhada_direita/`: 4 poses do Gemini (1ª folha) + 4 com o sombreado das pernas trocado (`trocar_pernas.py`), porque o Gemini não desenha a perna distante à frente. GIF `build/previa/cisneo_caminhada_direita_v2.gif`. Pendente: balanço dos braços |
+| Cisneo | caminhada p/ esquerda, 8 quadros | v1 em `sprites/cisneo/caminhada_esquerda/`: espelho da direita com a bolsa removida e a espada da base esquerda sobreposta (`espelhar_para_esquerda.py`). O Gemini não conseguiu gerar esta direção (folha em `bruto/`). GIF `build/previa/cisneo_caminhada_esquerda_v1.gif` |
 | Cisneo 3D | parado e caminhada | descartado como visual; fica em `sprites/cisneo_3d/` só como referência de lados e poses |
 | Rawry | conceito | a criar |
