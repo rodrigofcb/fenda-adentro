@@ -65,6 +65,24 @@ python ferramentas/previa_passeio.py build/previa/cisneo_passeio_v3.gif sprites/
 Parâmetros: `--passada` (px por passo, 80), `--lift` (altura do pé, 20), `--bob` (3), `--braco` (graus, 18). No jogo, o deslocamento
 por quadro que casa com os pés é `passada * 2 / quadros` (10 px a 1×).
 
+**Resultado (16/10):** o boneco foi reprovado como visual: peças giradas não parecem desenho, e 16 quadros interpolados ficam
+"boiando". Ele passou a servir só de *blocking*: 8 quadros-chave (0, 2, 4, ... 14) viram folhas de pose
+(`build/referencia_gemini/poses_caminhada_direita_v3_{1,2}_6x.png`) que o Gemini redesenha quadro a quadro.
+
+## Caminhada desenhada quadro a quadro (v4)
+
+Pedido ao Gemini, uma folha 2×2 de poses por vez, anexando a base `cisneo_perfil_direita_6x.png` (já sem o punho da espada):
+
+> Redesenhe cada uma das 4 poses desta grade 2×2 como pixel art desenhada à mão, no estilo exato da imagem de referência do
+> personagem (mesma paleta, mesmas proporções, mesmo tamanho). Siga a silhueta de cada pose fielmente: posição das pernas, dos pés,
+> do braço, altura do corpo. Corrija o que está mecânico: joelho e tornozelo dobrados com naturalidade, bota dobrando no pé, túnica e
+> capa reagindo ao passo. PNG, fundo #FF00FF, 4 células do mesmo tamanho sem espaço entre elas.
+
+Limpeza: a folha é cortada ao meio nos dois eixos, cada célula é reamostrada com um bloco único por folha (mediana das alturas / 258),
+mapeada na paleta e alinhada (`alinhar_quadros.py`). Se o Gemini desenhar o punho da espada no quadril (vista direita),
+`ferramentas/tirar_punho.py QUADRO GUIA SAIDA` apaga usando a silhueta do quadro-guia do boneco. A base
+`sprites/cisneo/base/cisneo_perfil_direita_sem_punho.png` é a versão da base sem esse punho, e é a que vai nos pedidos.
+
 
 ```
 python ferramentas/snap_grid.py bruto/cisneo/base/cisneo_base_frente_gemini.jpg \
@@ -102,6 +120,7 @@ python ferramentas/montar_gif.py build/previa/cisneo3d_caminhada_right.gif sprit
 | Cisne | vistas (direita, esquerda, frente, costas) | a gerar |
 | Cisneo | caminhada p/ direita, 8 quadros | v2 em `sprites/cisneo/caminhada_direita/`: 4 poses do Gemini (1ª folha) + 4 com o sombreado das pernas trocado (`trocar_pernas.py`), porque o Gemini não desenha a perna distante à frente. GIF `build/previa/cisneo_caminhada_direita_v2.gif`. Pendente: balanço dos braços |
 | Cisneo | caminhada p/ esquerda, 8 quadros | v1 em `sprites/cisneo/caminhada_esquerda/`: espelho da direita com a bolsa removida e a espada da base esquerda sobreposta (`espelhar_para_esquerda.py`). O Gemini não conseguiu gerar esta direção (folha em `bruto/`). GIF `build/previa/cisneo_caminhada_esquerda_v1.gif` |
-| Cisneo | caminhada p/ direita e esquerda, 16 quadros (boneco articulado) | v3 em `sprites/cisneo/caminhada_direita_v3/` e `caminhada_esquerda_v3/`, 60 ms por quadro. GIFs `build/previa/cisneo_caminhada_direita_v3.gif`, `cisneo_caminhada_esquerda_v3.gif`, `cisneo_passeio_v3.gif`. Em avaliação: fluidez do movimento |
+| Cisneo | caminhada p/ direita e esquerda, 16 quadros (boneco articulado) | v3, reprovada como visual (peças rígidas, movimento "boiando"); os quadros ficam em `sprites/cisneo/caminhada_*_v3/` como guia de pose para o Gemini |
+| Cisneo | caminhada p/ direita, 8 quadros desenhados sobre as poses do v3 | v4 em `sprites/cisneo/caminhada_direita_v4/`, 110 ms por quadro. O Gemini redesenhou cada pose (folhas em `bruto/`), inclusive a perna distante à frente; punho da espada apagado nos quadros 00-01 (`tirar_punho.py`). GIF `build/previa/cisneo_caminhada_direita_v4.gif`. Em avaliação |
 | Cisneo 3D | parado e caminhada | descartado como visual; fica em `sprites/cisneo_3d/` só como referência de lados e poses |
 | Rawry | conceito | a criar |
